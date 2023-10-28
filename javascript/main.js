@@ -6,7 +6,7 @@ const especialidades = [
     {
         especialidad: "Clínico",
         profesional: "Dr. Carlos Almada",
-        atencion: "Martes",
+        atencion: "Martes y Viernes",
         img: "./images/otorrino.jpg",
         numero: 1
     },
@@ -20,28 +20,28 @@ const especialidades = [
     {
         especialidad: "Oftalmología",
         profesional: "Dra. Sara Lescano",
-        atencion: "Jueves y Lunes",
+        atencion: "Lunes y Jueves",
         img: "./images/otorrino.jpg",
         numero: 3
     },
     {
         especialidad: "Cardiología",
         profesional: "Dr. Mariano Fernandez",
-        atencion: "Viernes",
+        atencion: "Lunes, Martes y Viernes",
         img: "./images/otorrino.jpg",
         numero: 4
     },
     {
         especialidad: "Dermatología",
         profesional: "Dra. Alejandra Diaz",
-        atencion: "Martes y Sábados",
+        atencion: "Martes y Jueves",
         img: "./images/otorrino.jpg",
         numero: 5
     },
     {
         especialidad: "Otorrinolaringología",
         profesional: "Dra. Vanesa Torres",
-        atencion: "Jueves",
+        atencion: "Lunes y Jueves",
         img: "./images/otorrino.jpg",
         numero: 6
     },
@@ -55,13 +55,13 @@ const especialidades = [
     {
         especialidad: "Nutricionista",
         profesional: "Dr. Pedro Menendez",
-        atencion: "Viernes",
+        atencion: "Martes y Viernes",
         img: "./images/otorrino.jpg",
         numero: 8
     }
 ];
 
-especialidades.forEach((especialidad) => {
+especialidades.forEach((especialidad, index) => {
     let contenedorEspecialidad = document.createElement("div");
     contenedorEspecialidad.innerHTML = `<div class="card">
     <img src="${especialidad.img}" class="card-img-top" alt="...">
@@ -75,7 +75,7 @@ especialidades.forEach((especialidad) => {
 
     let boton = contenedorEspecialidad.querySelector(".btn");
 
-    boton.classList.add(`btn-${especialidad.numero}`);
+    boton.classList.add(`btn-${index}`);
 
     reservarTurnosMedicos.appendChild(contenedorEspecialidad)
 });
@@ -84,27 +84,40 @@ especialidades.forEach((especialidad) => {
 
 const elecciones = document.querySelectorAll(".btn");
 
-let reservarTurno = document.createElement("div");
-
 elecciones.forEach((eleccion) => {
-    eleccion.addEventListener("click", abrirReserva);
+    eleccion.addEventListener("click", () => abrirReserva());
 });
 
+let reservarTurno = document.createElement("div");
+
+
 function abrirReserva() {
-/*
-    if (se toca el btn-1) {
-        /*traer info del div que tiene ese btn
-    } else if*/
+
+    /*const btn = document.querySelectorAll(`.btn-${index}`);
+
+    switch (btn) {
+        case "btn-0":
+            especialidad = "Clínico";
+            dia = "martes";
+            horario1 = "12 hs";
+            horario2 = "14 hs";
+            break;
+        default:
+            diaDeLaSemana = "por confirmar";
+    }
+*/
 
     reservarTurno.innerHTML = `<div class="card card2" id="nuevo-form">
-    <h2>Usted ha elegido la especialidad "..."</h2>
+    <h2>Usted ha elegido la especialidad ...</h2>
 
     <div class="margin-top">
         <select class="form-select" aria-label="Default select example">
             <option selected>Por favor escoja el día de atención</option>
             <option value="1">Lunes</option>
             <option value="2">Martes</option>
-            <option value="3">Jueves</option>
+            <option value="3">Miercoles</option>
+            <option value="4">Jueves</option>
+            <option value="5">Viernes</option>
         </select>
     </div>
 
@@ -112,11 +125,23 @@ function abrirReserva() {
         <p>Escoja el horario</p>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                <label class="form-check-label" for="inlineRadio1">12 hs</label>
+                <label class="form-check-label" for="inlineRadio1">11hs</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">14:00 hs</label>
+                <label class="form-check-label" for="inlineRadio2">12hs</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                <label class="form-check-label" for="inlineRadio2">14hs</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                <label class="form-check-label" for="inlineRadio2">15hs</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+                <label class="form-check-label" for="inlineRadio2">16hs</label>
             </div>
     </div>
 
@@ -146,12 +171,6 @@ function abrirReserva() {
     `;
 
     reservarTurnosMedicos.appendChild(reservarTurno);
+    
 };
 
-
-/*<select class="form-select" aria-label="Default select example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>*/
