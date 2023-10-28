@@ -12,29 +12,49 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    align-items: stretch;
     justify-content: center;
-    padding: 1rem;
+    align-items: center;
     width: 100%;
 }
 
 .card {
     display: flex;
     margin: 1rem;
-    padding: 0.5rem;
+    padding: 0.1rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+img {
     width: 100%;
 }
 
 .card2 {
     display: flex;
     margin: 1rem;
-    padding: 3rem;
+    flex-direction: column;
+    padding: 1rem;
 }
 
 .card2.div {
-    margin: 3rem;
+    margin: 1rem;
 }
 
 .margin-top {
     padding-top: 1rem;
 }
+
+.card3 {
+    display: flex;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
