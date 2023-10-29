@@ -8,8 +8,8 @@ const especialidades = [
         profesional: "Dr. Carlos Almada",
         atencion: "Martes, Jueves y Viernes",
         atencionDias: ["Martes", "Jueves", "Viernes"],
-        horarios: ["14", "14:30", "15", "15:30", "16","16:30"],
-        img: "./images/otorrino.jpg",
+        horarios: ["14", "14:30", "15", "15:30", "16", "16:30"],
+        img: "./images/clinico.png",
         id: 1
     },
     {
@@ -18,7 +18,7 @@ const especialidades = [
         atencion: "Lunes",
         atencionDias: ["Lunes"],
         horarios: ["9", "10", "11", "12"],
-        img: "./images/otorrino.jpg",
+        img: "./images/traumatologia.png",
         id: 2
     },
     {
@@ -26,8 +26,8 @@ const especialidades = [
         profesional: "Dra. Sara Lescano",
         atencion: "Lunes y Miércoles",
         atencionDias: ["Lunes", "Miércoles"],
-        horarios: ["10", "11", "12", "15","16","17"],
-        img: "./images/otorrino.jpg",
+        horarios: ["10", "11", "12", "15", "16", "17"],
+        img: "./images/oftalmologia.png",
         id: 3
     },
     {
@@ -35,8 +35,8 @@ const especialidades = [
         profesional: "Dr. Mariano Fernandez",
         atencion: "Lunes, Martes y Viernes",
         atencionDias: ["Lunes", "Martes", "Viernes"],
-        horarios: ["8", "8:30", "9", "9:30", "10","10:30"],
-        img: "./images/otorrino.jpg",
+        horarios: ["8", "8:30", "9", "9:30", "10", "10:30"],
+        img: "./images/cardiologia.png",
         id: 4
     },
     {
@@ -45,7 +45,7 @@ const especialidades = [
         atencion: "Martes y Jueves",
         atencionDias: ["Martes", "Jueves"],
         horarios: ["8", "9", "10", "11", "12"],
-        img: "./images/otorrino.jpg",
+        img: "./images/repuesto.png",
         id: 5
     },
     {
@@ -54,7 +54,7 @@ const especialidades = [
         atencion: "Lunes y Jueves",
         atencionDias: ["Lunes", "Jueves"],
         horarios: ["12", "13", "14", "15", "16"],
-        img: "./images/otorrino.jpg",
+        img: "./images/otorrino.png",
         id: 6
     },
     {
@@ -63,7 +63,7 @@ const especialidades = [
         atencion: "Miércoles",
         atencionDias: ["Miércoles"],
         horarios: ["15", "16", "17", "18", "19"],
-        img: "./images/otorrino.jpg",
+        img: "./images/ginecologia.png",
         id: 7
     },
     {
@@ -71,15 +71,15 @@ const especialidades = [
         profesional: "Dr. Pedro Menendez",
         atencion: "Martes y Miércoles",
         atencionDias: ["Martes", "Miércoles"],
-        horarios: ["8", "8:30", "9", "9:30", "10","10:30", "11", "11:30"],
-        img: "./images/otorrino.jpg",
+        horarios: ["8", "8:30", "9", "9:30", "10", "10:30", "11", "11:30"],
+        img: "./images/nutricionista.png",
         id: 8
     }
 ];
 
 especialidades.forEach((especialidad) => {
     let contenedorEspecialidad = document.createElement("div");
-    contenedorEspecialidad.innerHTML = `<div class="card">
+    contenedorEspecialidad.innerHTML = `<div class="card cardEsp">
     <img src="${especialidad.img}" class="card-img-top" alt="...">
      <div class="card-body">
       <h5 class="card-title">${especialidad.especialidad}</h5>
@@ -165,7 +165,7 @@ function abrirReserva(especialidadId) {
 
     llenarFormulario.appendChild(reservarTurno);
 
-    //*parte 3**/
+    /**parte 3**/
     const confirmarTurno = document.querySelector("#formulario");
     let confirmarReserva = document.createElement("div");
 
@@ -174,7 +174,7 @@ function abrirReserva(especialidadId) {
         mostrarTurno()
     });
 
-    function mostrarTurno () {
+    function mostrarTurno() {
         let diaSeleccionado = document.querySelector("#selectDia").value;
 
         let horarioSeleccionado = document.querySelector("input[name=inlineRadioOptions]:checked").value;
@@ -184,10 +184,12 @@ function abrirReserva(especialidadId) {
         <p> ${especialidadClick.especialidad}</p>
         <p>Día: ${diaSeleccionado}</p>
         <p>Horario: ${horarioSeleccionado} hs.</p>
+        <a href="#finalizarRes" class="btn btn-primary" id="finalizar">Finalizar</a> 
         </div>`
 
         confirmarTurno.appendChild(confirmarReserva);
-
+        
+        function guardarJson () {
         let nombreUsuario = document.querySelector("#validationDefault01").value;
         let dni = document.querySelector("#validationDefault02").value;
         let telefono = document.querySelector("#validationDefault03").value;
@@ -200,13 +202,19 @@ function abrirReserva(especialidadId) {
             Email: email,
             Especialidad: especialidadClick.especialidad,
             Día: diaSeleccionado,
-            Horario: horarioSeleccionado 
+            Horario: horarioSeleccionado
         }
 
         const usuarioJson = JSON.stringify(guardarDatos)
         localStorage.setItem("Reserva", usuarioJson)
+        }
+        guardarJson ()
 
+        const botonFinalizar = document.querySelector("#finalizar");
+        botonFinalizar.addEventListener("click", finalizar);
+
+        function finalizar() {
+            confirmarReserva.innerHTML = "<h4>Gracias por haber utilizado nuestro servicio. Recuerde concurrir a la cita con 15 minutos de anticipación.</h2>";
+        }
     }
 }
-
-
