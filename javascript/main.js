@@ -18,7 +18,7 @@ const especialidades = [
         atencion: "Lunes",
         atencionDias: ["Lunes"],
         horarios: ["9", "10", "11", "12"],
-        img: "./images/traumatologia.png",
+        img: "./images/traumatologia1.png",
         id: 2
     },
     {
@@ -27,7 +27,7 @@ const especialidades = [
         atencion: "Lunes y Miércoles",
         atencionDias: ["Lunes", "Miércoles"],
         horarios: ["10", "11", "12", "15", "16", "17"],
-        img: "./images/oftalmologia.png",
+        img: "./images/oftalmologia1.png",
         id: 3
     },
     {
@@ -36,7 +36,7 @@ const especialidades = [
         atencion: "Lunes, Martes y Viernes",
         atencionDias: ["Lunes", "Martes", "Viernes"],
         horarios: ["8", "8:30", "9", "9:30", "10", "10:30"],
-        img: "./images/cardiologia.png",
+        img: "./images/cardiologia1.png",
         id: 4
     },
     {
